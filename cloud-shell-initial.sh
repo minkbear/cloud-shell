@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ ! -d ~/.ssh ]; then
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+fi
+
 # Generate SSH
 rsaKeyFile=/home/cloudshell-user/.ssh/id_rsa
 if [ ! -f "$rsaKeyFile" ]; then
