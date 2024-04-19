@@ -6,7 +6,7 @@ chmod 700 ~/.ssh
 fi
 
 # Generate SSH
-rsaKeyFile=/home/cloudshell-user/.ssh/id_rsa
+rsaKeyFile=/home/${USER}/.ssh/id_rsa
 if [ ! -f "$rsaKeyFile" ]; then
     #add rsa key
     ssh-keygen -b 2048 -t rsa -f "$rsaKeyFile" -q -N ""
@@ -66,5 +66,7 @@ sudo ssh-keyscan -H bitbucket.org >> ~/.ssh/known_hosts
 sudo ssh-keyscan -H gitlab.com >> ~/.ssh/known_hosts
 
 # Git config
+git config --global user.name "$USER"
+git config --global user.email "$USER@gmail.com"
 git config --global init.defaultBranch "main"
 git config --global pull.rebase false
